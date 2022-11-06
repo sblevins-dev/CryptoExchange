@@ -3,11 +3,15 @@ import CoinContext from "../../context/CoinContext"
 import "./transactions.css"
 
 export const Transactions = () => {
-  const { loginOpen, setLoginOpen } = useContext(CoinContext)
+  const { setLoginOpen, user } = useContext(CoinContext)
 
   useEffect(() => {
-    setLoginOpen(true)
+    if (user === null) {
+      setLoginOpen(true)
+    }
+    
   }, [])
+
   return (
     <div className="transactions-header">
       <h1>Transactions</h1>

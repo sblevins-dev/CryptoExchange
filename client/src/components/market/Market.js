@@ -21,7 +21,8 @@ export const Market = () => {
   useEffect(() => {
     setLoginOpen(false)
     setRegisterOpen(false)
-  }, [filteredList]);
+    setFilteredList(coins)
+  }, [coins]);
 
   return (
     <div className="market-wrapper">
@@ -40,7 +41,7 @@ export const Market = () => {
           <li>Dynamics</li>
         </ul>
         <ul className="coin-list">
-          {filteredList.map((coin) => (
+          {filteredList.length > 0 && filteredList.map((coin) => (
             <li key={coin.id} className="coin">
               <div
                 className="coin-name"

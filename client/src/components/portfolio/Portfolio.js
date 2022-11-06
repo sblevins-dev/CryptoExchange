@@ -3,11 +3,14 @@ import CoinContext from "../../context/CoinContext"
 import "./portfolio.css"
 
 export const Portfolio = () => {
-  const { loginOpen, setLoginOpen } = useContext(CoinContext)
+  const { setLoginOpen, user } = useContext(CoinContext)
 
   useEffect(() => {
-    setLoginOpen(true)
+    if (user === null) {
+      setLoginOpen(true)
+    }
   }, [])
+
   return (
     <div className="portfolio-header">
       <h1>Portfolio</h1>

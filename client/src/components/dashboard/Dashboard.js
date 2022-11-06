@@ -3,11 +3,15 @@ import CoinContext from "../../context/CoinContext"
 import "./dashboard.css"
 
 export const Dashboard = () => {
-  const { loginOpen, setLoginOpen } = useContext(CoinContext)
+  const { setLoginOpen, user } = useContext(CoinContext)
 
   useEffect(() => {
-    setLoginOpen(true)
+    if (user === null) {
+      setLoginOpen(true)
+    }
+    
   }, [])
+  
   return (
     <div className="dashboard-header">
       <h1>Dashboard</h1>

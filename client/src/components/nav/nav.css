@@ -45,7 +45,7 @@
     position: absolute;
     top: 50%;
     transform: translate(0%, -50%);
-    padding-left: 50px;
+    padding-left: 60px;
     transition: all 0.2s ease-in-out;
 }
 

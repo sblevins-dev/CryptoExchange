@@ -26,11 +26,15 @@ function App() {
 
   useEffect(() => {
     get()
+
+    const currUser = JSON.parse(localStorage.getItem("user"))
+
+    setUser(currUser)
   }, [])
 
   return (
     <div className="app">
-      <CoinContext.Provider value={{coins, user, loginOpen, setLoginOpen, registerOpen, setRegisterOpen}}>
+      <CoinContext.Provider value={{coins, user, setUser, loginOpen, setLoginOpen, registerOpen, setRegisterOpen}}>
         <BrowserRouter>
           <Login />
           <Register />
