@@ -1,12 +1,14 @@
 import "./market.css";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import CoinContext from "../../context/CoinContext";
 
 export const Market = () => {
-  const { coins } = useContext(CoinContext);
+  const { coins, setLoginOpen, setRegisterOpen } = useContext(CoinContext);
   const [filteredList, setFilteredList] = useState(coins);
+  const navigate = useNavigate();
 
   const search = (e) => {
     setFilteredList(
@@ -16,7 +18,10 @@ export const Market = () => {
     );
   };
 
-  useEffect(() => {}, [filteredList]);
+  useEffect(() => {
+    setLoginOpen(false)
+    setRegisterOpen(false)
+  }, [filteredList]);
 
   return (
     <div className="market-wrapper">
@@ -37,17 +42,25 @@ export const Market = () => {
         <ul className="coin-list">
           {filteredList.map((coin) => (
             <li key={coin.id} className="coin">
-              <div className="coin-name">
+              <div
+                className="coin-name"
+                onClick={() => navigate("./coin", { state: { coin } })}
+              >
                 <img src={coin.image} alt={coin.name} />
                 <div>{coin.name}</div>
               </div>
-              <div>${coin.current_price.toFixed(2)}</div>
+              <div>
+                ${coin.current_price && coin.current_price.toLocaleString()}
+              </div>
               <div
                 style={{
-                  color: coin.price_change_percentage_24h < 0 ? "red" : "#87FE07",
+                  color:
+                    coin.price_change_percentage_24h < 0 ? "red" : "#87FE07",
                 }}
               >
-                {coin.price_change_percentage_24h.toFixed(2)}%
+                {coin.price_change_percentage_24h &&
+                  coin.price_change_percentage_24h.toLocaleString()}
+                %
               </div>
               <div>div</div>
             </li>

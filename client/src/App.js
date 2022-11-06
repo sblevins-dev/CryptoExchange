@@ -5,9 +5,14 @@ import Coins from "./api/CoinGeckoApi.js";
 import { Nav } from "./components/nav/Nav";
 import { Main } from "./components/main/Main";
 import { useEffect, useState } from "react";
+import { Login } from "./components/login/Login";
+import { Register } from "./components/register/Register";
 
 function App() {
   const [coins, setCoins] = useState([])
+  const [user, setUser] = useState(null)
+  const [loginOpen, setLoginOpen] = useState(false)
+  const [registerOpen, setRegisterOpen] = useState(false)
 
   const get = async () => {
     const coinData = await Coins.getCoins()
@@ -25,8 +30,10 @@ function App() {
 
   return (
     <div className="app">
-      <CoinContext.Provider value={{coins}}>
+      <CoinContext.Provider value={{coins, user, loginOpen, setLoginOpen, registerOpen, setRegisterOpen}}>
         <BrowserRouter>
+          <Login />
+          <Register />
           <Nav />
           <Main />
         </BrowserRouter>

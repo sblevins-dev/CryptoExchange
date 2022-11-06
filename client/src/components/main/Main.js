@@ -5,6 +5,7 @@ import { Dashboard } from "../dashboard/Dashboard"
 import { Transactions } from "../transactions/Transactions"
 import { Portfolio } from "../portfolio/Portfolio"
 import { News } from "../news/News"
+import { Coin } from "../../pages/Coin";
 
 export const Main = () => {
   return (
@@ -16,6 +17,7 @@ export const Main = () => {
           <Route path="transactions" element={<Transactions />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="news" element={<News />} />
+          <Route path="coin" element={<Coin />} />
         </Route>
       </Routes>
     </div>
