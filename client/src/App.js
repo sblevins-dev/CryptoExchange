@@ -9,6 +9,7 @@ import { Login } from "./components/login/Login";
 import { Register } from "./components/register/Register";
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(true);
   const [coins, setCoins] = useState([])
   const [user, setUser] = useState(null)
   const [loginOpen, setLoginOpen] = useState(false)
@@ -34,7 +35,7 @@ function App() {
 
   return (
     <div className="app">
-      <CoinContext.Provider value={{coins, user, setUser, loginOpen, setLoginOpen, registerOpen, setRegisterOpen}}>
+      <CoinContext.Provider value={{ menuOpen, setMenuOpen, coins, user, setUser, loginOpen, setLoginOpen, registerOpen, setRegisterOpen}}>
         <BrowserRouter>
           <Login />
           <Register />

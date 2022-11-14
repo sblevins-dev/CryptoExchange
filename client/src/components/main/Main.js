@@ -6,10 +6,14 @@ import { Transactions } from "../transactions/Transactions"
 import { Portfolio } from "../portfolio/Portfolio"
 import { News } from "../news/News"
 import { Coin } from "../../pages/Coin";
+import { useContext } from "react";
+import CoinContext from "../../context/CoinContext";
 
 export const Main = () => {
+  const { menuOpen } = useContext(CoinContext)
+
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper" style={{ maxWidth: "calc(100vw - 80px)"}}>
       <Routes>
         <Route path="/">
           <Route index element={<Market />} />

@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import CoinContext from "../../context/CoinContext";
 
 export const Market = () => {
-  const { coins, setLoginOpen, setRegisterOpen } = useContext(CoinContext);
+  const { coins, setLoginOpen, setRegisterOpen, menuOpen } = useContext(CoinContext);
   const [filteredList, setFilteredList] = useState(coins);
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export const Market = () => {
 
   return (
     <div className="market-wrapper">
-      <div className="market-header">
+      <div className="market-header" style={{width: menuOpen ? "calc(100vw - 220px)" : "calc(100vw - 80px)"}}>
         <h1>Market</h1>
         <div className="market-search">
           <FontAwesomeIcon className="icon" icon={faMagnifyingGlass} />
@@ -38,7 +38,6 @@ export const Market = () => {
           <li>Coin</li>
           <li>Price</li>
           <li>% Change</li>
-          <li>Dynamics</li>
         </ul>
         <ul className="coin-list">
           {filteredList.length > 0 && filteredList.map((coin) => (
@@ -63,7 +62,6 @@ export const Market = () => {
                   coin.price_change_percentage_24h.toLocaleString()}
                 %
               </div>
-              <div>div</div>
             </li>
           ))}
         </ul>

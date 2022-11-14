@@ -11,36 +11,47 @@ import {
   faIdCard,
   faChevronLeft,
   faChevronRight,
-  faRightFromBracket
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Nav = () => {
-  const [menuOpen, setMenuOpen] = useState(true);
-  const { user, setUser, setLoginOpen, setRegisterOpen } = useContext(CoinContext)
+  const {
+    user,
+    setUser,
+    setLoginOpen,
+    setRegisterOpen,
+    menuOpen,
+    setMenuOpen,
+  } = useContext(CoinContext);
 
   const logout = () => {
-    localStorage.removeItem("user")
-    setUser(null)
-  }
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   const login = () => {
-    setRegisterOpen(false)
-    setLoginOpen(true)
-  }
+    setRegisterOpen(false);
+    setLoginOpen(true);
+  };
 
-  useEffect(() => {
-    
-  }, [user])
+  useEffect(() => {}, [user]);
 
   return (
-    <div className="nav-wrapper" style={{ width: menuOpen ? "220px" : "80px" }}>
+    <div
+      className="nav-wrapper"
+      style={{
+        width: menuOpen ? "220px" : "80px",
+        minWidth: menuOpen ? "220px" : "80px",
+      }}
+    >
       <div className="profile-header">
         <div className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
           <FontAwesomeIcon icon={menuOpen ? faChevronLeft : faChevronRight} />
         </div>
-        <div className="avatar">
+        <span className="logo"><p>C</p><p>X</p></span>
+        {/* <div className="avatar">
           <img src="" alt="profile" />
-        </div>
+        </div> */}
         <span className="name" style={{ display: menuOpen ? "block" : "none" }}>
           {user ? user.name : ""}
         </span>
@@ -54,14 +65,14 @@ export const Nav = () => {
             </label>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link>
             <FontAwesomeIcon icon={faBell} className="icon" />
             <label style={{ display: menuOpen ? "block" : "none" }}>
               Notifications
             </label>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/dashboard">
             <FontAwesomeIcon icon={faShop} className="icon" />
@@ -95,12 +106,16 @@ export const Nav = () => {
         {user === null ? (
           <li onClick={login}>
             <FontAwesomeIcon icon={faRightFromBracket} />
-            <label style={{ display: menuOpen ? "block" : "none" }}>Login</label>
+            <label style={{ display: menuOpen ? "block" : "none" }}>
+              Login
+            </label>
           </li>
         ) : (
           <li onClick={logout}>
             <FontAwesomeIcon icon={faRightFromBracket} />
-            <label style={{ display: menuOpen ? "block" : "none" }}>Logout</label>
+            <label style={{ display: menuOpen ? "block" : "none" }}>
+              Logout
+            </label>
           </li>
         )}
       </ul>

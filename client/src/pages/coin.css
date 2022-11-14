@@ -20,6 +20,7 @@
 
   .coin-info {
     padding: 150px 20px 20px;
+    overflow-y: scroll;
   }
 
   .coin-price {
@@ -41,6 +42,7 @@
   .coin-price-info div {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     border-bottom: 1px solid gray;
     padding-bottom: 10px;
     max-width: 500px;

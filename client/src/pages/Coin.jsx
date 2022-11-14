@@ -1,11 +1,11 @@
 import "./coin.css";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Graph } from "../components/graph/Graph";
 
 export const Coin = () => {
   const { state } = useLocation();
   const [coin, setCoin] = useState(state.coin);
-  console.log(coin);
 
   return (
     <div className="coin-wrapper">
@@ -61,7 +61,7 @@ export const Coin = () => {
             <span>{coin.max_supply && coin.max_supply.toLocaleString()}</span>
           </div>
         </div>
-        <div className="coin-graph">Graph</div>
+        <Graph id={coin.id}/>
       </div>
     </div>
   );
