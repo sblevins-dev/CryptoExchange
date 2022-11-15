@@ -6,7 +6,7 @@ import { BuyCoinModal } from "./BuyCoinModal";
 
 export const Coin = () => {
   const { state } = useLocation();
-  const [coin, setCoin] = useState(state.coin);
+  const coin = state.coin;
   const [modalOpen, setModalOpen] = useState(false);
 
   return (

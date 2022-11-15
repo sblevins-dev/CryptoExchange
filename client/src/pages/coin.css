@@ -24,6 +24,7 @@
 
   .coin-info {
     padding: 150px 20px 20px;
+    min-height: 100vh;
   }
 
   .coin-price {
@@ -78,7 +79,7 @@
 
   @media (max-width: 1100px) {
     .coin-price-info {
-        height: 500px;
+        height: max-content;
     }
 
     /* .coin-price-info div {
@@ -93,5 +94,11 @@
 
     .coin-price-info div {
         max-width: 500px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .coin-wrapper {
+      overflow-y: scroll;
     }
   }
