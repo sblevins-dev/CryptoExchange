@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./coinModal.css";
 
 export const BuyCoinModal = ({ coin, setModalOpen }) => {
+  
   const [formData, setFormData] = useState({
     coinID: coin.id,
     amount: 0,
@@ -16,6 +16,8 @@ export const BuyCoinModal = ({ coin, setModalOpen }) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  
 
   useEffect(() => {
     if (formData.total !== 0 || formData.total !== 0.0) {

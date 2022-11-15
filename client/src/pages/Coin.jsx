@@ -1,13 +1,23 @@
 import "./coin.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { Graph } from "../components/graph/Graph";
 import { BuyCoinModal } from "./BuyCoinModal";
+import CoinContext from "../context/CoinContext";
 
 export const Coin = () => {
   const { state } = useLocation();
   const coin = state.coin;
   const [modalOpen, setModalOpen] = useState(false);
+  const {user, setLoginOpen} = useContext(CoinContext)
+
+  const openModal = () => {
+    if (user === null) {
+      setLoginOpen(true)
+    } else {
+      setModalOpen(true)
+    }
+  }
 
   return (
     <div className="coin-wrapper">
@@ -25,7 +35,7 @@ export const Coin = () => {
           >
             {coin.price_change_percentage_24h}
           </span>
-          <button className="coin-buy-btn" onClick={() => setModalOpen(true)}>Buy</button>
+          <button className="coin-buy-btn" onClick={openModal}>Buy</button>
         </div>
         <div className="coin-price-info">
           <div className="market-cap">
