@@ -19,6 +19,27 @@
     padding: 5px;
     border-radius: 5px;
     border: 1px solid rgb(48, 48, 48);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+    background-color: rgb(248, 66, 66);
 }
 
 .form-header {

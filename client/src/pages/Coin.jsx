@@ -65,7 +65,7 @@ export const Coin = () => {
           </div>
         </div>
         <Graph id={coin.id}/>
-        {modalOpen && <BuyCoinModal coin={coin} />}
+        {modalOpen && <BuyCoinModal coin={coin} setModalOpen={setModalOpen} />}
       </div>
     </div>
   );
