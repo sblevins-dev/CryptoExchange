@@ -85,6 +85,7 @@
   max-width: 100%;
   padding: 20px;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 /* .coin div {
@@ -100,7 +101,6 @@
   display: flex;
   align-items: center;
   padding-left: 10px;
-  cursor: pointer;
   min-width: 250px;
 }
 

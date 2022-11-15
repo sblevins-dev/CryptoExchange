@@ -1,3 +1,7 @@
+.coin-wrapper {
+  position: relative;
+}
+
 .coin-header {
     padding: 20px;
     height: 100px;
@@ -26,7 +30,28 @@
   .coin-price {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
+  }
+
+  .coin-buy-btn {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    background-color: rgb(185, 1, 185);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .coin-buy-btn:hover {
+    background-color: rgb(231, 89, 231);
+    transition: all 0.1s ease-in-out;
+  }
+
+  .coin-buy-btn:active {
+    background-color: purple;
   }
 
   .coin-price-info {

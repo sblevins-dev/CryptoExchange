@@ -2,10 +2,12 @@ import "./coin.css";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Graph } from "../components/graph/Graph";
+import { BuyCoinModal } from "./BuyCoinModal";
 
 export const Coin = () => {
   const { state } = useLocation();
   const [coin, setCoin] = useState(state.coin);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className="coin-wrapper">
@@ -23,6 +25,7 @@ export const Coin = () => {
           >
             {coin.price_change_percentage_24h}
           </span>
+          <button className="coin-buy-btn" onClick={() => setModalOpen(true)}>Buy</button>
         </div>
         <div className="coin-price-info">
           <div className="market-cap">
@@ -62,6 +65,7 @@ export const Coin = () => {
           </div>
         </div>
         <Graph id={coin.id}/>
+        {modalOpen && <BuyCoinModal coin={coin} />}
       </div>
     </div>
   );

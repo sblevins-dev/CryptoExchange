@@ -6,7 +6,8 @@ import { useContext, useEffect, useState } from "react";
 import CoinContext from "../../context/CoinContext";
 
 export const Market = () => {
-  const { coins, setLoginOpen, setRegisterOpen, menuOpen } = useContext(CoinContext);
+  const { coins, setLoginOpen, setRegisterOpen, menuOpen } =
+    useContext(CoinContext);
   const [filteredList, setFilteredList] = useState(coins);
   const navigate = useNavigate();
 
@@ -19,14 +20,19 @@ export const Market = () => {
   };
 
   useEffect(() => {
-    setLoginOpen(false)
-    setRegisterOpen(false)
-    setFilteredList(coins)
+    setLoginOpen(false);
+    setRegisterOpen(false);
+    setFilteredList(coins);
   }, [coins]);
 
   return (
     <div className="market-wrapper">
-      <div className="market-header" style={{width: menuOpen ? "calc(100vw - 220px)" : "calc(100vw - 80px)"}}>
+      <div
+        className="market-header"
+        style={{
+          width: menuOpen ? "calc(100vw - 220px)" : "calc(100vw - 80px)",
+        }}
+      >
         <h1>Market</h1>
         <div className="market-search">
           <FontAwesomeIcon className="icon" icon={faMagnifyingGlass} />
@@ -40,30 +46,32 @@ export const Market = () => {
           <li>% Change</li>
         </ul>
         <ul className="coin-list">
-          {filteredList.length > 0 && filteredList.map((coin) => (
-            <li key={coin.id} className="coin">
-              <div
-                className="coin-name"
+          {filteredList.length > 0 &&
+            filteredList.map((coin) => (
+              <li
+                key={coin.id}
+                className="coin"
                 onClick={() => navigate("./coin", { state: { coin } })}
               >
-                <img src={coin.image} alt={coin.name} />
-                <div>{coin.name}</div>
-              </div>
-              <div>
-                ${coin.current_price && coin.current_price.toLocaleString()}
-              </div>
-              <div
-                style={{
-                  color:
-                    coin.price_change_percentage_24h < 0 ? "red" : "#87FE07",
-                }}
-              >
-                {coin.price_change_percentage_24h &&
-                  coin.price_change_percentage_24h.toLocaleString()}
-                %
-              </div>
-            </li>
-          ))}
+                <div className="coin-name">
+                  <img src={coin.image} alt={coin.name} />
+                  <div>{coin.name}</div>
+                </div>
+                <div>
+                  ${coin.current_price && coin.current_price.toLocaleString()}
+                </div>
+                <div
+                  style={{
+                    color:
+                      coin.price_change_percentage_24h < 0 ? "red" : "#87FE07",
+                  }}
+                >
+                  {coin.price_change_percentage_24h &&
+                    coin.price_change_percentage_24h.toLocaleString()}
+                  %
+                </div>
+              </li>
+            ))}
         </ul>
       </div>
     </div>
