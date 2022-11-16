@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     get()
 
-    const currUser = JSON.parse(localStorage.getItem("user"))
+    const currUser = JSON.parse(localStorage.getItem("user")) ?? null
 
     setUser(currUser)
   }, [])

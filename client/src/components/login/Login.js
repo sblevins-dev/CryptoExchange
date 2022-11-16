@@ -25,8 +25,7 @@ export const Login = () => {
 
     try {
       if (loginForm.email !== "" && loginForm !== "") {
-        await loginUser(loginForm);
-        const currUser = JSON.parse(localStorage.getItem("user"));
+        const currUser = await loginUser(loginForm);
         setUser(currUser);
       }
     } catch (err) {

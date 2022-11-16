@@ -1,13 +1,18 @@
-import { useState, useEffect } from "react";
+import CoinContext from "../context/CoinContext"
+import { useState, useEffect, useContext } from "react";
 import "./coinModal.css";
 
 export const BuyCoinModal = ({ coin, setModalOpen }) => {
+  const { user } = useContext(CoinContext)
   
   const [formData, setFormData] = useState({
+    userID: user.id,
     coinID: coin.id,
+    currentPrice: coin.current_price,
     amount: 0,
     total: 0.0,
   });
+
   const [coinAmount, setCoinAmount] = useState(0.0);
 
   const setForm = (e) => {
@@ -56,7 +61,7 @@ export const BuyCoinModal = ({ coin, setModalOpen }) => {
           </div>
           <button type="submit">Purchase</button>
           <div className="underline"></div>
-          <span>$0.00 available</span>
+          <span>${user.buyingPower ? user.buyingPower.toLocaleString() : 0.00} available</span>
         </form>
       </div>
     </div>
