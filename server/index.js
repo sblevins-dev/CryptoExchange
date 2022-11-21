@@ -5,6 +5,7 @@ const connectDB = require('./config/db')
 const cors = require('cors')
 const coins = require('./routes/CoinRoutes')
 const user = require('./routes/UserRoutes')
+const transactions = require('./routes/TransactionRoutes')
 
 connectDB();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: false}))
 
 app.use('/api/coins', coins)
 app.use('/api/user', user)
+app.use('/api/transactions', transactions)
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)

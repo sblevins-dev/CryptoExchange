@@ -61,6 +61,26 @@ const loginUser = async (req, res) => {
   }
 };
 
+const updateBuyingPower = async (req, res) => {
+  const updatedUser = await User.findByIdAndUpdate(req.params.id, {
+    $set: { buyingPower: req.body.buyingPower }
+  }, { new: true})
+
+  if (!updatedUser) {
+    res.status(400).json({
+      message: "Error updating User"
+    })
+  } else {
+    res.status(201).json({
+      id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      buyingPower: updatedUser.buyingPower,
+      token: generateToken(updatedUser._id)
+    })
+  }
+}
+
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "1d",
@@ -70,4 +90,5 @@ const generateToken = (id) => {
 module.exports = {
   createUser,
   loginUser,
+  updateBuyingPower,
 };
