@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-const baseUrl = "/api/user/"
+const baseUrl = "/api/"
 
 export const createUser = async (data) => {
-    const res = await axios.post(baseUrl + "create", data)
+    const res = await axios.post(baseUrl + "user/create", data)
 
     if (res.data) {
         localStorage.setItem('user', JSON.stringify(res.data))
@@ -26,3 +26,15 @@ export const loginUser = async (data) => {
 
     return res.data
 }
+
+export const getTransactions = async (user) => {
+    const token = user.token
+
+    const res = await axios.get(baseUrl + `transactions/${user.id}`, {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    return res.data
+}
+

@@ -2,7 +2,15 @@ const express = require('express')
 const Transaction = require("../models/TransactionModel")
 
 const getTransactions = async (req, res) => {
-    res.send('hello')
+    const transactions = await Transaction.find({userID: req.params.id})
+
+    if (!transactions) {
+        res.status(400).json({
+            message: "Error getting transactions"
+        })
+    } else {
+        res.status(200).send(transactions)
+    }
 }
 
 // userID: user.id,

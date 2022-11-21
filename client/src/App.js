@@ -7,6 +7,7 @@ import { Main } from "./components/main/Main";
 import { useEffect, useState } from "react";
 import { Login } from "./components/login/Login";
 import { Register } from "./components/register/Register";
+import { getTransactions } from "./api/UserApi"
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(true);
@@ -14,6 +15,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [loginOpen, setLoginOpen] = useState(false)
   const [registerOpen, setRegisterOpen] = useState(false)
+  const [transactions, setTransactions] = useState([]);
 
   const get = async () => {
     const coinData = await Coins.getCoins()
@@ -25,10 +27,22 @@ function App() {
     }
   }
 
+  const getTrans = async (user) => {
+    let list = await getTransactions(user)
+
+    setTransactions(list)
+
+    console.log(transactions)
+  }
+
   useEffect(() => {
     get()
 
     const currUser = JSON.parse(localStorage.getItem("user")) ?? null
+
+    if (currUser !== null) {
+      getTrans(currUser)
+    }
 
     setUser(currUser)
   }, [])
